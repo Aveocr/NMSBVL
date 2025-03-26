@@ -25,13 +25,6 @@ Nt = int((t_end - t_start) / tau) + 1
 # Точки по t
 t = np.linspace(t_start, t_end, Nt)
 
-# Параметр схемы (должен быть <= 1 для устойчивости)
-gamma = tau / h
-
-# Проверка условия устойчивости
-if gamma > 1:
-    print(f"Предупреждение: схема может быть неустойчивой, так как gamma = {gamma} > 1")
-
 # Инициализация сетки решения
 u = np.zeros((Nx, Nt))
 
@@ -80,7 +73,7 @@ for j in range(0, Nt, 2):
 # df = pd.DataFrame(data, index=[f"{xi:.1f}" for xi in x])
 # df.index.name = "x"
 
-# print(df.to_html())
+# print(df.to_latex())
 
 print("    x  |", end="")
 for j in range(0, Nt, 2):  # Выводим не все моменты времени для компактности
